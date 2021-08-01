@@ -1,0 +1,231 @@
+[
+    {
+        "id": "b019c34a6c920d79",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "20cdd8501f2ad91f",
+        "type": "mqtt in",
+        "z": "b019c34a6c920d79",
+        "name": "",
+        "topic": "codigoIoT/SIC/flow3/temp",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7bb392fb5cc033d1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "ef18beba81f7c0d9",
+                "52b86b995d419363"
+            ]
+        ]
+    },
+    {
+        "id": "ef18beba81f7c0d9",
+        "type": "json",
+        "z": "b019c34a6c920d79",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 350,
+        "y": 140,
+        "wires": [
+            [
+                "3a7e355c1420ee0d",
+                "83dc783ed08d0a3e",
+                "5feb04c6af7a0c29",
+                "52b86b995d419363"
+            ]
+        ]
+    },
+    {
+        "id": "3a7e355c1420ee0d",
+        "type": "function",
+        "z": "b019c34a6c920d79",
+        "name": " get-ID-function",
+        "func": "msg.payload = msg.payload.ID;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 140,
+        "wires": [
+            [
+                "e90ef147be86ba81"
+            ]
+        ]
+    },
+    {
+        "id": "83dc783ed08d0a3e",
+        "type": "function",
+        "z": "b019c34a6c920d79",
+        "name": "get-mnsg-function",
+        "func": "msg.payload = msg.payload.mnsg;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 220,
+        "wires": [
+            [
+                "d1885c15fd63923e"
+            ]
+        ]
+    },
+    {
+        "id": "5feb04c6af7a0c29",
+        "type": "function",
+        "z": "b019c34a6c920d79",
+        "name": "get-Temp-function",
+        "func": "msg.payload = msg.payload.Temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 300,
+        "wires": [
+            [
+                "4672f37c6758ef4e"
+            ]
+        ]
+    },
+    {
+        "id": "e90ef147be86ba81",
+        "type": "ui_text_input",
+        "z": "b019c34a6c920d79",
+        "name": "",
+        "label": "Nombre - label",
+        "tooltip": "",
+        "group": "d1b950314a020c67",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 840,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d1885c15fd63923e",
+        "type": "ui_text",
+        "z": "b019c34a6c920d79",
+        "group": "d1b950314a020c67",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Mensaje recibido - label",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 880,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4672f37c6758ef4e",
+        "type": "ui_gauge",
+        "z": "b019c34a6c920d79",
+        "name": "",
+        "group": "d1b950314a020c67",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura - label",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 850,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "52b86b995d419363",
+        "type": "debug",
+        "z": "b019c34a6c920d79",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "7bb392fb5cc033d1",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "3.66.119.222",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d1b950314a020c67",
+        "type": "ui_group",
+        "name": "Fecha - Group",
+        "tab": "7cd5224e37f0360e",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "7cd5224e37f0360e",
+        "type": "ui_tab",
+        "name": "Fecha Flow002 - Tab",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
